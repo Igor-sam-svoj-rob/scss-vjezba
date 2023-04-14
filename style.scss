@@ -1,0 +1,88 @@
+@import "boje";
+@import "media";
+
+$font1: Verdana, Geneva, Tahoma, sans-serif;
+
+@mixin flexContainer($justify, $align, $border) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  border: $border;
+}
+
+@mixin aGumb {
+  a {
+    background-color: $boja2;
+    color: $boja1;
+    text-decoration: none;
+    padding: 1rem;
+    display: inline-block;
+
+    &:hover {
+      color: $boja5;
+    }
+  }
+}
+
+@mixin margin-mix($margin) {
+  margin: $margin;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+%placeholderSelector {
+  background-color: $boja2;
+  color: $boja1;
+}
+
+header,
+footer {
+  @extend %placeholderSelector;
+}
+
+/* Header i nesting headera */
+
+header {
+  @include aGumb();
+  text-align: center;
+
+  h1 {
+    color: $boja6;
+  }
+
+  p {
+    font-size: 2rem;
+  }
+}
+
+section {
+  h2 {
+    font-family: $font1;
+    color: $boja4;
+  }
+
+  p {
+    color: $boja3;
+  }
+}
+
+article {
+  margin: 2rem;
+  @extend %placeholderSelector;
+  border: 5px solid red;
+}
+
+main {
+  height: 50vh;
+  @include aGumb;
+  @include flexContainer(center, space-evenly, 5px solid $boja4);
+  @include margin-mix(2rem 0);
+
+  @include mobile {
+    flex-direction: column;
+  }
+}
