@@ -1,0 +1,31 @@
+$boja1: #eee;
+$boja2: #333;
+$boja3: #800;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@mixin spacing($margin, $padding) {
+  margin: $margin;
+  padding: $padding;
+}
+
+body {
+  background-color: $boja1;
+}
+
+div {
+  background-color: $boja3;
+  height: 2rem;
+  @include spacing(1rem 0, 0);
+}
+
+@for $i from 1 through 8 {
+  $width: percentage(1 / $i);
+  .col#{$i} {
+    width: $width;
+  }
+}
